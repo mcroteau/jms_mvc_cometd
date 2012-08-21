@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 				
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  
+	<modelVersion>4.0.0</modelVersion>
+	
+	
+	<groupId>org.croteau.jms</groupId>
+	<artifactId>jms</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	
+	
+	<modules>
+		<module>producer</module>
+		<module>subscriber</module>
+	</modules>
+
+
+	<properties>
+		<jetty.version>6.1.26</jetty.version>
+	</properties>
+
+<!--
+  	<build>
+  	  	<plugins>
+  	  		<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<version>6.1.26</version>
+				<configuration>
+					<contextPath>/jms</contextPath>
+					<contextHandlers>
+						<contextHandler>
+							<war>producer/target/jms-producer-${project.version}.war</war>
+							<contextPath>/jms-producer</contextPath>
+							<extraClasspath>resources</extraClasspath>
+						</contextHandler>
+						<contextHandler>
+							<war>subscriber/target/jms-subscriber-${project.version}.war</war>
+							<contextPath>/jms-subscriber</contextPath>
+							<extraClasspath>resources</extraClasspath>
+						</contextHandler>
+					</contextHandlers>
+				</configuration>
+			</plugin>
+  	  	</plugins>
+  	</build>
+-->
+	 
+</project>
