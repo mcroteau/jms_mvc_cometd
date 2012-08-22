@@ -46,13 +46,6 @@
     $(document).ready(function() {
 
 		function _connectionEstablished() {
-			
-			var subscription2 = cometd.subscribe('/hello', function(){
-				console.warn('server responded hello');
-			});
-			console.warn('publishing message');
-			cometd.publish('/service/hello',  { mydata: { foo: 'bar' } })
-			
             $('.content').append('<div>CometD Connection Established</div>');
         }
 
@@ -91,10 +84,14 @@
             if (handshake.successful === true) {
                 cometd.batch(function() {
                     cometd.subscribe('/hello', function(message) {
-                        $('#body').append('<div>Server Says: ' + message.data.greeting + '</div>');
+						console.log(arguments);
+						if(message.data.message){
+                        	$('.content').append('<div>Server Says: ' + message.data.message + '</div>');
+						}else{
+	                        $('.content').append('<div>Server Says: ' + message.data.greeting + '</div>');
+						}
                     });
-                    // Publish on a service channel since the message is for the server only
-                    cometd.publish('/service/hello', { name: 'World' });
+                    sayHello();
                 });
             }
         }
@@ -107,8 +104,8 @@
 
         var cometURL = location.protocol + "//" + location.host + config.contextPath + "/cometd";
         cometd.configure({
-            url: cometURL,
-            logLevel: 'warn'
+            url      : cometURL,
+            logLevel : 'warn'
         });
 
 
@@ -118,7 +115,8 @@
 		}
 		
 		function sayHello(){
-			cometd.publish('/service/hello',  { mydata: { foo: 'bar' } })
+			// Publish on a service channel since the message is for the server only
+            cometd.publish('/service/hello', { name: 'World' });
 		}
 		
 		$('.btn').click(function(){

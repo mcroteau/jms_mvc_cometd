@@ -21,31 +21,29 @@
 		<jetty.version>7.6.4.v20120524</jetty.version>
 	</properties>
 
-<!--
+
   	<build>
+	
   	  	<plugins>
   	  		<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>maven-jetty-plugin</artifactId>
-				<version>6.1.26</version>
-				<configuration>
-					<contextPath>/jms</contextPath>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <configuration>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
 					<contextHandlers>
-						<contextHandler>
-							<war>producer/target/jms-producer-${project.version}.war</war>
-							<contextPath>/jms-producer</contextPath>
-							<extraClasspath>resources</extraClasspath>
-						</contextHandler>
-						<contextHandler>
-							<war>subscriber/target/jms-subscriber-${project.version}.war</war>
+						<contextHandler implementation="org.eclipse.jetty.webapp.WebAppContext">
+							<war>${project.build.directory}/../subscriber/target/jms-subscriber-${project.version}.war</war>
 							<contextPath>/jms-subscriber</contextPath>
-							<extraClasspath>resources</extraClasspath>
 						</contextHandler>
+						<contextHandler implementation="org.eclipse.jetty.webapp.WebAppContext">
+							<war>${project.build.directory}/../producer/target/jms-producer-0.0.1-SNAPSHOT.war</war>
+							<contextPath>/jms-producer</contextPath>
+						</contextHandler> 
 					</contextHandlers>
-				</configuration>
+                </configuration>
 			</plugin>
   	  	</plugins>
+
   	</build>
--->
 	 
 </project>
