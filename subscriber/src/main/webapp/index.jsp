@@ -84,7 +84,12 @@
             if (handshake.successful === true) {
                 cometd.batch(function() {
                     cometd.subscribe('/hello', function(message) {
-                        $('.content').append('<div>Server Says: ' + message.data.greeting + '</div>');
+						console.log(arguments);
+						if(message.data.message){
+                        	$('.content').append('<div>Server Says: ' + message.data.message + '</div>');
+						}else{
+	                        $('.content').append('<div>Server Says: ' + message.data.greeting + '</div>');
+						}
                     });
                     sayHello();
                 });

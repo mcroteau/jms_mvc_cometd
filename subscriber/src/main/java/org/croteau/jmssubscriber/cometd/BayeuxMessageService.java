@@ -60,4 +60,15 @@ public class BayeuxMessageService {
         remote.deliver(serverSession, "/hello", output, null);
     }
 
+
+	public void pushMessage(String message){
+		String channel = "/hello";
+		Map<String, Object> output = new HashMap<String, Object>();
+        output.put("message", message);
+
+		bayeux.createIfAbsent(channel);
+		bayeux.getChannel(channel).publish(serverSession, output, null);
+		
+	}
+
 }
