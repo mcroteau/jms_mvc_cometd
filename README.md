@@ -4,7 +4,7 @@ JMS Publish/Subscribe example applications using Spring Web MVC, JMS, ActiveMQ, 
 
 ###Producer App
 
-Running the Producer App will allow you to publish a message on a test topic by browsing to http://localhost:8080/jms-producer/produce?message=<message to send>
+Running the Producer App will allow you to publish a message on a test topic by browsing to http://localhost:8080/jms-producer/produce?message=message to send
 
 
 ###Subscriber App

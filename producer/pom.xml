@@ -120,6 +120,10 @@
                     <webAppConfig>
                         <contextPath>/jms-producer</contextPath>
                     </webAppConfig>
+					<contextHandler implementation="org.eclipse.jetty.webapp.WebAppContext">
+						<war>../../web-common/target/jms-web-common-${project.version}.war</war>
+						<contextPath>/web-common</contextPath>
+					</contextHandler>
                 </configuration>
 			</plugin>
   	  	</plugins>

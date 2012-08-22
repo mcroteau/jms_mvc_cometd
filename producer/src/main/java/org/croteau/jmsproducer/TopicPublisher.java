@@ -22,18 +22,6 @@ public class TopicPublisher {
 	private JmsTemplate jmsTemplate;
 	private Topic topic;
 
-/**
-	public void produce(final Object object) {
-		this.jmsTemplate.send(this.topic, new MessageCreator() {
-	    	public Message createMessage(Session session) throws JMSException {
-	    		ObjectMessage mm = session.createObjectMessage();
-	      		mm.setObject(object);
-	      		return mm;
-	    	}
-	  	});
-	}
-**/
-	
 
 	public void publish(final String title, final String message) {
 	    this.jmsTemplate.send(this.topic, new MessageCreator() {
