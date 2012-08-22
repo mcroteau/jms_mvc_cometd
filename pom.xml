@@ -18,7 +18,7 @@
 
 
 	<properties>
-		<jetty.version>6.1.26</jetty.version>
+		<jetty.version>7.6.4.v20120524</jetty.version>
 	</properties>
 
 <!--

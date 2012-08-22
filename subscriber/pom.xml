@@ -21,7 +21,8 @@
 		<apache.mq.version>5.4.2</apache.mq.version>
 		<commons.collections.version>3.2.1</commons.collections.version>
 		<log4j.version>1.2.17</log4j.version>
-		<jetty.version>6.1.26</jetty.version>
+		<jetty.version>7.6.4.v20120524</jetty.version>
+		<cometd.version>2.4.3</cometd.version>
 	</properties>
 
 
@@ -82,16 +83,71 @@
 			<version>${google.gson.version}</version>
 		</dependency>
 
+        <dependency>
+            <groupId>org.cometd.java</groupId>
+            <artifactId>bayeux-api</artifactId>
+            <version>2.4.3</version>
+        </dependency>
+
+		<dependency>
+            <groupId>org.cometd.java</groupId>
+            <artifactId>cometd-java-annotations</artifactId>
+            <version>2.4.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.cometd.java</groupId>
+            <artifactId>cometd-java-server</artifactId>
+            <version>2.4.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.cometd.java</groupId>
+            <artifactId>cometd-websocket-jetty</artifactId>
+            <version>2.4.3</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.cometd.java</groupId>
+                    <artifactId>cometd-java-client</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-servlets</artifactId>
+			<version>8.1.5.v20120716</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-continuation</artifactId>
+			<version>8.1.5.v20120716</version>
+		</dependency>
+
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
 		</dependency>
-						
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+
+
 	</dependencies>
 
 
-  
 
   	<build>
     	
@@ -105,7 +161,6 @@
 	    <scriptSourceDirectory>src/main/scripts</scriptSourceDirectory>
 	    <testSourceDirectory>src/test/java</testSourceDirectory>
 
-
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -114,12 +169,15 @@
 
   	  	<plugins>
   	  		<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>maven-jetty-plugin</artifactId>
-				<version>${jetty.version}</version>
-				<configuration>
-					<contextPath>/jms</contextPath>
-				</configuration>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>7.6.4.v20120524</version>
+                <configuration>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <webAppConfig>
+                        <contextPath>/jms-subscriber</contextPath>
+                    </webAppConfig>
+                </configuration>
 			</plugin>
   	  	</plugins>
   	</build>

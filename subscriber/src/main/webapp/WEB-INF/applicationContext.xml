@@ -13,7 +13,7 @@
                         http://activemq.apache.org/schema/core/activemq-core.xsd">
 
 
-    <context:component-scan base-package="org.croteau.jms" />
+    <context:component-scan base-package="org.croteau.jmssubscriber" />
     <context:annotation-config/>
 
     
@@ -24,17 +24,9 @@
     </bean>
 	
 	
-	<bean id="queueOne" class="org.apache.activemq.command.ActiveMQQueue">
-		<constructor-arg value="test.queue" />
-	</bean>
+	<bean name="messageListener" class="org.croteau.jmssubscriber.JMSListener" />
 	
-	<bean id="topicOne" class="org.apache.activemq.command.ActiveMQTopic">
-	  <constructor-arg value="test.topic" />
-	</bean>
-	
-	<bean name="messageListener" class="org.croteau.jmssubscriber.listener.JMSListener" />
-	
-	
+		
 	<jms:listener-container connection-factory="connectionFactory" cache="none">
 	  	<jms:listener destination="test.queue" ref="messageListener" />
 	</jms:listener-container>
