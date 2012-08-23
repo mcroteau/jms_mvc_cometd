@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.croteau.jms</groupId>
+		<groupId>org.croteau</groupId>
 		<artifactId>jms</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
@@ -29,6 +29,12 @@
     
 	<dependencies>
 
+		<dependency>
+			<groupId>org.croteau</groupId>
+			<artifactId>jms-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
 	  	<dependency>
 	    	<groupId>junit</groupId>
 	    	<artifactId>junit</artifactId>
@@ -176,6 +182,16 @@
                     <webAppConfig>
                         <contextPath>/jms-subscriber</contextPath>
                     </webAppConfig>
+					<contextHandlers>
+						<contextHandler implementation="org.eclipse.jetty.webapp.WebAppContext">
+							<war>${project.build.directory}/../../web-common/target/jms-web-common-${project.version}.war</war>
+							<contextPath>/web-common</contextPath>
+						</contextHandler>
+						<contextHandler implementation="org.eclipse.jetty.webapp.WebAppContext">
+							<war>${project.build.directory}/../../producer/target/jms-producer-${project.version}.war</war>
+							<contextPath>/jms-producer</contextPath>
+						</contextHandler>
+					</contextHandlers>
 				</configuration>
 			</plugin>
   	  	</plugins>

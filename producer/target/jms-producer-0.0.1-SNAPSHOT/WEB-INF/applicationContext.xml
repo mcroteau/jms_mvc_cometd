@@ -37,13 +37,13 @@
 
 
 	<bean id="topicOne" class="org.apache.activemq.command.ActiveMQTopic">
-	  <constructor-arg value="test.topic" />
+	 	<constructor-arg value="TOPIC.ONE" />
 	</bean>
 	
 	
 	<bean name="topicPublisher" class="org.croteau.jmsproducer.TopicPublisher">
-	  <property name="connectionFactory" ref="connectionFactory" />
-	  <property name="topic" ref="topicOne" />
+	  	<property name="connectionFactory" ref="connectionFactory" />
+	  	<property name="topic" ref="topicOne" />
 	</bean>
 	
 		

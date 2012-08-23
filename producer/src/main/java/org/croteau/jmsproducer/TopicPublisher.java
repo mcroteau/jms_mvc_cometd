@@ -2,10 +2,8 @@ package org.croteau.jmsproducer;
 
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
-import javax.jms.MapMessage;
 import javax.jms.Message;
 import javax.jms.ObjectMessage;
-import javax.jms.Queue;
 import javax.jms.Session;
 import javax.jms.Topic;
 
@@ -15,6 +13,9 @@ import org.springframework.beans.factory.annotation.Required;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 
+import javax.jms.MessageProducer;
+
+
 
 public class TopicPublisher {
 
@@ -23,18 +24,11 @@ public class TopicPublisher {
 	private Topic topic;
 
 
-	public void publish(final String title, final String message) {
-	    this.jmsTemplate.send(this.topic, new MessageCreator() {
-	    	public Message createMessage(Session session) throws JMSException {
-	    		MapMessage mm = session.createMapMessage();
-	      		mm.setString("title", title);
-	      		mm.setString("message", message);
-	      		return mm;
-	    	}
-	 	});
-	 	logger.info("Message sent to message broker");
+	public void publish(String orderGson) {		
+		this.jmsTemplate.convertAndSend(this.topic, orderGson);
 	}
-	
+		
+
 	
 	@Required
 	public void setConnectionFactory(ConnectionFactory connectionFactory) {

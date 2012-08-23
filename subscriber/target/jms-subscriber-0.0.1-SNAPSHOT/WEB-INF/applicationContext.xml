@@ -23,17 +23,18 @@
         </property>
     </bean>
 	
+	<bean name="queueListener" class="org.croteau.jmssubscriber.QueueListener" />
 	
-	<bean name="messageListener" class="org.croteau.jmssubscriber.JMSListener" />
-	
-		
 	<jms:listener-container connection-factory="connectionFactory" cache="none">
-	  	<jms:listener destination="test.queue" ref="messageListener" />
+	  	<jms:listener destination="test.queue" ref="queueListener" />
 	</jms:listener-container>
-
-
-	<jms:listener-container connection-factory="connectionFactory" cache="none">
-		<jms:listener destination="test.topic" ref="messageListener" />
+	
+	
+	<bean name="topicListener" class="org.croteau.jmssubscriber.TopicListener" />
+	
+	<jms:listener-container connection-factory="connectionFactory" cache="none" acknowledge="auto" destination-type="topic" >
+		<jms:listener destination="TOPIC.ONE" ref="topicListener" />
 	</jms:listener-container>	
+	
 	
 </beans>

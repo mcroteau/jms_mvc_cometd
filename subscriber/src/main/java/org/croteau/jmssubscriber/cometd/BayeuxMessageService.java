@@ -49,7 +49,6 @@ public class BayeuxMessageService {
 
     @Listener("/service/hello")
     public void processHello(ServerSession remote, ServerMessage.Mutable message){
-		
 		System.out.println(" processing hello.. " + message);
 		
         Map<String, Object> input = message.getDataAsMap();
@@ -61,10 +60,10 @@ public class BayeuxMessageService {
     }
 
 
-	public void pushMessage(String message){
+	public void pushMessage(String orderGson){
 		String channel = "/hello";
 		Map<String, Object> output = new HashMap<String, Object>();
-        output.put("message", message);
+        output.put("orderGson", orderGson);
 
 		bayeux.createIfAbsent(channel);
 		bayeux.getChannel(channel).publish(serverSession, output, null);

@@ -9,18 +9,30 @@
 
 <style type="text/css">
 .frame-container{
-	border: 1px solid #DDD;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
-	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.075);
-	box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+
 }	
 iframe{
 	border:none;
 	width:100%;
-	height:100%;
+	height:500px;
+	overflow:hidden;
+}
+.container-mod{
+	width:1060px;
+	margin:10px auto;
+}
+.iframe-wrapper{
+	margin:auto 15px;
+	float:left;
+	padding:15px;
+		width:470px;
+		background-color: white;
+		-webkit-border-radius: 6px;
+		-moz-border-radius: 6px;
+		border-radius: 6px;
+		-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, .065);
+		-moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+		box-shadow: 0 1px 4px rgba(0, 0, 0, .065);
 }
 </style>
 	
@@ -29,7 +41,7 @@ iframe{
 
 
 
-<div class="container">
+<div class="container-mod">
 	
 	<div class="row">
 		<div class="span10">
@@ -37,16 +49,15 @@ iframe{
 		</div>
 	</div>
 	
-	
-	<div class="row">
+	<div class="">
 		
-		<div class="span6">
+		<div class="iframe-wrapper">
 			<div class="frame-container">
 				<iframe src="http://localhost:8080/jms-producer"></iframe>
 			</div>
 		</div>
 		
-		<div class="span6 ">
+		<div class="iframe-wrapper " >
 			<div class="frame-container">
 				<iframe src="http://localhost:8080/jms-subscriber"/></iframe>
 			</div>

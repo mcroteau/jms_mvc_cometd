@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.croteau.jms</groupId>
+		<groupId>org.croteau</groupId>
 		<artifactId>jms</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
@@ -87,6 +87,18 @@
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
 		</dependency>
+
+       <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
+		
+		<dependency>
+			<groupId>org.croteau</groupId>
+			<artifactId>jms-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 						
 	</dependencies>
 
@@ -120,10 +132,12 @@
                     <webAppConfig>
                         <contextPath>/jms-producer</contextPath>
                     </webAppConfig>
-					<contextHandler implementation="org.eclipse.jetty.webapp.WebAppContext">
-						<war>../../web-common/target/jms-web-common-${project.version}.war</war>
-						<contextPath>/web-common</contextPath>
-					</contextHandler>
+					<contextHandlers>
+						<contextHandler implementation="org.eclipse.jetty.webapp.WebAppContext">
+							<war>${project.build.directory}/../../web-common/target/jms-web-common-${project.version}.war</war>
+							<contextPath>/web-common</contextPath>
+						</contextHandler>
+					</contextHandlers>
                 </configuration>
 			</plugin>
   	  	</plugins>

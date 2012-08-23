@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	
-	<groupId>org.croteau.jms</groupId>
+	<groupId>org.croteau</groupId>
 	<artifactId>jms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
@@ -22,7 +22,7 @@
 	<properties>
 		<jetty.version>7.6.4.v20120524</jetty.version>
 	</properties>
-	<!--
+	
   	 <build>
   	   	<plugins>
   	   		<plugin>
@@ -48,5 +48,5 @@
 	 		</plugin>
   	   	</plugins>				
   	 </build>
-	-->
+
 </project>

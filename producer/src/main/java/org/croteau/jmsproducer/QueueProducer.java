@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Required;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 
+import java.sql.Timestamp;
 
 public class QueueProducer {
 
@@ -19,16 +20,16 @@ public class QueueProducer {
 	private JmsTemplate jmsTemplate;
 	private Queue queue;
 	
-	public void produce(final String title, final String message) {
+	public void produce(final String timestamp, final String orderGson) {
 	    this.jmsTemplate.send(this.queue, new MessageCreator() {
 	    	public Message createMessage(Session session) throws JMSException {
 	    		MapMessage mm = session.createMapMessage();
-	      		mm.setString("title", title);
-	      		mm.setString("message", message);
+	      		mm.setString("timestamp", timestamp);
+	      		mm.setString("orderGson", orderGson);
 	      		return mm;
 	    	}
 	 	});
-	 	logger.info("Message sent to message broker");
+		System.out.println("Message produced on queue");
 	}
 	
 	
