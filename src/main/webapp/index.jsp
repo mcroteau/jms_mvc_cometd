@@ -25,14 +25,15 @@ iframe{
 	margin:auto 15px;
 	float:left;
 	padding:15px;
-		width:470px;
-		background-color: white;
-		-webkit-border-radius: 6px;
-		-moz-border-radius: 6px;
-		border-radius: 6px;
-		-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, .065);
-		-moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
-		box-shadow: 0 1px 4px rgba(0, 0, 0, .065);
+	width:470px;
+	background-color: white;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, .065);
+	-moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, .065);
+	overflow:hidden;
 }
 </style>
 	
