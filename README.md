@@ -1,4 +1,4 @@
-##Sample JMS App
+#Sample JMS App
 
 Technologies : 
 --------------
