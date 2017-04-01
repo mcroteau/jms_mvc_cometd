@@ -1,4 +1,4 @@
-#Sample JMS App
+#Simple Spring JMS App
 
 JMS Publish/Subscribe example applications using Spring Web MVC, JMS, ActiveMQ, CometD
 
